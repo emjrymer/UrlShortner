@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Add your bookmark here</h1>
+    <h1 class="center-align">Add your bookmark here</h1>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" class="btn btn-success" value="Submit">
-        <a href="{% url 'first_view' %}" class="btn btn-danger">Reset</a>
+        <button class="btn waves-effect waves-light blue-grey" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+        <a href="{% url 'first_view' %}" class="waves-effect waves-light btn blue-grey">RESET</a>
     </form>
     <h5>Your short code is: <a href="{{ url.saved_url }}">{{ url.short_code }}</a></h5>
 {% endblock %}

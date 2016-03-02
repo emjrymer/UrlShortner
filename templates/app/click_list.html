@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      <h1>Click List</h1>
+      <h1 class="center-align">Bookmark Access</h1>
+    <ul>
     {% for click in object_list %}
-        <div>Time: {{ click.access_time }}  -  URL:  {{ click.bookmarked_url.title }}</div>
+        <div><li>Time: {{ click.access_time }}  -  URL:  {{ click.bookmarked_url.title }}</li></div>
     {% endfor %}
+    </ul>
 {% endblock %}
