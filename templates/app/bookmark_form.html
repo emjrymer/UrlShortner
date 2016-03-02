@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   {% if request.user.is_authenticated %}
+        <h1 class="center-align">Welcome, {{ request.user }}</h1>
+        <h1 class="center-align" id="gray_header">Add your bookmark here</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button class="btn waves-effect waves-light blue-grey" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+            <a href="{% url 'first_view' %}" class="waves-effect waves-light btn blue-grey">RESET</a>
+        </form>
+    {% else %}
+       <h1 class="center-align">Welcome, {{ request.user }}</h1>
+       <a href="{% url 'login' %}" class="waves-effect waves-light btn blue-grey">Login</a>
+    {% endif %}
+{% endblock %}

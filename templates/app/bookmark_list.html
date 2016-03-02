@@ -1,8 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="center-align">List of Bookmarks</h1>
-    {% for bookmark in object_list %}
-        <div><a href="{{ bookmark.saved_url }}">{{ bookmark.short_code }}  --  Accessed: {{ bookmark.time_created }}</a></div>
-    {% endfor %}
+    <h2 class="center-align">List of Bookmarks</h2>
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="url">URL</th>
+              <th data-field="title">Title</th>
+              <th data-field="number">Number of Visits</th>
+              <th data-field="user">Creating User</th>
+              <th data-field="time">Accessed Time</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for url in object_list %}
+          <tr>
+            <td class="center-align"><a href="{% url 'bookmark_detail_view' url.pk %}">{{ url.short_code }}</a></td>
+            <td class="center-align">{{ url.title }}</td>
+            <td class="center-align">{{ url.click_count }}</td>
+            <td class="center-align">{{ url.user }}</td>
+            <td class="center-align">{{ url.time_created }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    <a href="{% url 'login' %}" class="waves-effect waves-light btn blue-grey">Edit</a>
 {% endblock %}

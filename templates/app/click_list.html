@@ -4,7 +4,7 @@
       <h1 class="center-align">Bookmark Access</h1>
     <ul>
     {% for click in object_list %}
-        <div><li>Time: {{ click.access_time }}  -  URL:  {{ click.bookmarked_url.title }}</li></div>
+        <div><li>Time: {{ click.access_time }}  -  URL:  {{ click.bookmarked_url.title }}, {{ object.click_count }}</li></div>
     {% endfor %}
     </ul>
 {% endblock %}

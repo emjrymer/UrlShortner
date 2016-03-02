@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -9,15 +10,16 @@ class Bookmark(models.Model):
     description = models.TextField()
     short_code = models.CharField(max_length=30)
     time_created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User)
 
     class Meta:
         ordering = ['-time_created']
 
+    @property
+    def click_count(self):
+        return self.click_set.all().count()
+
 
 class Click(models.Model):
-    access_time = models.DateTimeField(auto_now_add=True)
+    clicked = models.BooleanField(default=True)
     bookmarked_url = models.ForeignKey(Bookmark)
-
-    class Meta:
-        ordering = ['-access_time']
-

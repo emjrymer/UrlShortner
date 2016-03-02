@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="center-align">Bookmark Detail</h2>
+    {% if request.user == object.user %}
+         <table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="id">URL</th>
+              <th data-field="title">Title</th>
+              <th data-field="name">Number of Visits</th>
+              <th data-field="price">Creating User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{ object.saved_url }}</td>
+              <td>{{ object.title }}</td>
+            <td>{{ object.click_count }}</td>
+            <td>{{ object.user }}</td>
+          </tr>
+        </tbody>
+      </table>
+        <a href="{% url 'bookmark_update_view' object.id %}" class="waves-effect waves-light btn blue-grey">Edit</a>
+    {% else %}
+      <table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="id">URL</th>
+              <th data-field="name">Number of Visits</th>
+              <th data-field="price">Creating User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{ object.saved_url }}</td>
+            <td>{{ object.click_count }}</td>
+            <td>{{ object.user }}</td>
+          </tr>
+        </tbody>
+      </table>
+    {% endif %}
+{% endblock %}
+

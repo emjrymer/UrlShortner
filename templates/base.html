@@ -1,9 +1,11 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>Welcome</title>
 </head>
 <body>
@@ -13,12 +15,12 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{% url 'first_view' %}">Home</a></li>
             <li><a href='{% url 'bookmark_list_view' %}'>Bookmark List</a></li>
-            <li><a href='{% url 'click_list_view' %}'>Bookmark Access Times</a></li>
+            {% if request.user.is_authenticated %}
+              <li><a href="{% url 'logout' %}" >Logout</a></li>
+            {% endif %}
           </ul>
         </div>
     </nav>
-
-
     {% block content %}
     {% endblock %}
 </div>
