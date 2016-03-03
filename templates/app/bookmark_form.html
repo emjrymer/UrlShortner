@@ -2,8 +2,8 @@
 
 {% block content %}
    {% if request.user.is_authenticated %}
-        <h1 class="center-align">Welcome, {{ request.user }}</h1>
-        <h1 class="center-align" id="gray_header">Add your bookmark here</h1>
+        <h1 class="center-align gray_header" id="bold">Welcome, {{ request.user }}</h1>
+        <h4 class="center-align gray_header" id="span">Add your bookmark here</h4>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p}}

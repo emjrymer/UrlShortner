@@ -17,10 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views import new_link, BookmarkListView, BookmarkDetailView, BookmarkCreateView, BookmarkUpdateView
+from app.views import new_link, BookmarkListView, BookmarkDetailView, BookmarkCreateView, BookmarkUpdateView, homepage
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', homepage),
     url(r'^bookmark_detail/(?P<pk>\d+)', BookmarkDetailView.as_view(), name="bookmark_detail_view"),
     url(r'^bookmark_create/$', BookmarkCreateView.as_view(), name="first_view"),
     url(r'^list/$', BookmarkListView.as_view(), name="bookmark_list_view"),

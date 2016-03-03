@@ -1,7 +1,15 @@
-#gray_header {
+.gray_header {
     color:#727272;
 }
 
 h1, h2 {
     font-family: AppleGothic;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+#span {
+    letter-spacing: 7px;
 }

@@ -29,6 +29,10 @@ class BookmarkListView(ListView):
     model = Bookmark
 
 
+def homepage(request):
+    return HttpResponseRedirect(reverse('first_view'))
+
+
 def new_link(request, url):
     bookmark = Bookmark.objects.get(short_code=url)
     return HttpResponseRedirect(bookmark.saved_url)
